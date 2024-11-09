@@ -3,6 +3,7 @@
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>트리플에스 소트</title>
         <script src="./index.js" charset="UTF-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </head>
     <body>
         <main>
@@ -14,7 +15,7 @@
                     <p style="font-size: 16px;font-weight: normal;">Choose your better one.</p>
                 </div>
             </header>
-            <article>
+            <article style="height: 70vh;">
                 <button onclick="run()"><p>시작</p><p>START</p></button>
             </article>
             <footer>
@@ -25,6 +26,7 @@
         body {
             margin: 0;
             text-align: center;
+            word-break: keep-all;
         }
         header {
             height: 20vh;
@@ -35,13 +37,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        article {
-            height: 70vh;
+            flex-wrap: wrap;
         }
         footer {
             height: 10vh;
-            flex-wrap: wrap;
         }
         button {
             width: 12.75vh;
@@ -68,6 +67,11 @@
             border-collapse: collapse;
             margin: auto;
             text-align: center;
+            width: 90vw;
+            max-width: 320px;
+        }
+        table-wrap {
+            padding: 10px;
         }
     </style>
 </html>

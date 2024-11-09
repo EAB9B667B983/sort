@@ -109,18 +109,43 @@ function run() {
         span_progress.innerText = (progress*100/112).toFixed(1)+'%'
         span_progress.style.background = `linear-gradient(to right, #6e2cff ${progress*100/112}%, #000 ${progress*100/112}%)`
         while (display()) {}
+        // select(0)
         return 0
     }
     
     function result() {
         btn_left.remove()
         btn_right.remove()
-        span_progress.remove()
-        comment_progress.remove()
         const final = obj.a6[0].map(v=>callData(v))
         const content = final.map(v=>`<tr><td>${final.indexOf(v)+1}</td><td>${v.join(' ')}</td></tr>`).join('')
         var table = `<table><thead><tr><th>순위</th><th>이름</th><tr></thead><tbody>${content}</tbody></table>`
-        document.querySelector('article').innerHTML = table
+        span_progress.remove()
+        comment_progress.remove()
+        document.querySelector('footer').remove()
+        var btn_save = document.createElement('button')
+        var btn_save_wrap = document.createElement('div')
+        btn_save.addEventListener('click',()=>{
+            capture()
+        })
+        btn_save.innerHTML = '<p>저장</p><p>Save</p>'
+        btn_save.style.cssText = 'margin:10px !important'
+        btn_save_wrap.style.width = '100%'
+        btn_save_wrap.append(btn_save)
+        var tablewrap = document.createElement('table-wrap')
+        tablewrap.innerHTML = table
+        document.querySelector('article').append(btn_save_wrap)
+        document.querySelector('article').append(tablewrap)
+        document.querySelector('article').style.height = ''
+    }
+
+    async function capture() {
+        var c = await html2canvas(document.querySelector('table-wrap'), {scale:2})
+        c.toBlob(async blob=>{
+            var downloadLink = document.createElement("a");
+            downloadLink.download = 'tripleS_sort_'+new Date()*1;
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.click();
+        })
     }
 
     function select0() {

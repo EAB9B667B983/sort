@@ -137,9 +137,13 @@ function run() {
         document.querySelector('article').append(tablewrap)
         document.querySelector('article').style.height = ''
     }
-
+    
     async function capture() {
+        var span = document.createElement('p')
+        span.innerText = 'https://sort.wav.haus/'
+        document.querySelector('table-wrap').append(span)
         var c = await html2canvas(document.querySelector('table-wrap'), {scale:2})
+        span.remove()
         c.toBlob(async blob=>{
             var downloadLink = document.createElement("a");
             downloadLink.download = 'tripleS_sort_'+new Date()*1;

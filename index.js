@@ -65,7 +65,6 @@ function run() {
     }
 
     function display(element,source,handler) {
-        // element.innerHTML = `<p>${source[0]}</p><p>${source[1]}</p>`
         element.innerText = source[language]
         element.style.background = '#'+source[2]
         element.style.color = '#'+source[3]
@@ -135,7 +134,6 @@ function run() {
         })
         btn_save.innerHTML = language ? 'Save' : '저장'
         btn_save.style.cssText = 'margin:10px !important'
-        // btn_save_wrap.style.width = '100%'
         btn_save_wrap.append(btn_save)
         var tablewrap = document.createElement('table-wrap')
         tablewrap.innerHTML = table

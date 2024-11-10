@@ -2,76 +2,44 @@
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>트리플에스 소트</title>
+        <link rel="stylesheet" href="./index.css">
         <script src="./index.js" charset="UTF-8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script>
+            setLang = (num)=>{
+                language = num
+                if (num) {
+                    comment1.innerText = 'Choose your better one.'
+                    document.querySelector('#run').innerText = 'START'
+                    btn0.style.backgroundColor='#808080'
+                    btn1.style.backgroundColor='#6e2cff'
+                } else {
+                    comment1.innerText = '더 선호하는 멤버를 선택하세요.'
+                    document.querySelector('#run').innerText = '시작'
+                    btn0.style.backgroundColor='#6e2cff'
+                    btn1.style.backgroundColor='#808080'
+                }
+            }
+            language=0
+        </script>
     </head>
     <body>
         <main>
             <header>
                 <div>
-                    <p>트리플에스 소트</p>
                     <p>tripleS Sort</p>
-                    <p style="font-size: 16px;font-weight: normal;">더 선호하는 멤버를 선택하세요.</p>
-                    <p style="font-size: 16px;font-weight: normal;">Choose your better one.</p>
+                    <p style="font-size: 16px;font-weight: normal;" id="comment1">더 선호하는 멤버를 선택하세요.</p>
                 </div>
             </header>
             <article style="height: 70vh;">
-                <button onclick="run()"><p>시작</p><p>START</p></button>
+                <button onclick="run()" id="run">시작</button>
             </article>
             <footer>
+                <div style="text-wrap: nowrap;width: 100%;">
+                    <button onclick="setLang(0)" id="btn0" style="background-color: #6e2cff;">한국어</button>
+                    <button onclick="setLang(1)" id="btn1" style="background-color: #808080;">English</button>
+                </div>
             </footer>
         </main>
     </body>
-    <style>
-        body {
-            margin: 0;
-            text-align: center;
-            word-break: keep-all;
-        }
-        header {
-            height: 20vh;
-            font-size: 25px;
-            font-weight: bold;
-        }
-        header,article,footer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        footer {
-            height: 10vh;
-        }
-        button {
-            width: 12.75vh;
-            height: 9.18vh;
-            background-color: #000;
-            color: #fff;
-            font-weight: bold;
-            border: 3px solid #000;
-            border-radius: 10%;
-            cursor: pointer;
-            margin: 5%;
-        }
-        button:hover {
-            background-color: #6e2cff;
-        }
-        p {
-            margin: 0;
-        }
-        th,td {
-            border: 1px solid #000;
-            padding: 4px 7px;
-        }
-        table {
-            border-collapse: collapse;
-            margin: auto;
-            text-align: center;
-            width: 90vw;
-            max-width: 320px;
-        }
-        table-wrap {
-            padding: 10px 10px 5px 10px;
-        }
-    </style>
 </html>
